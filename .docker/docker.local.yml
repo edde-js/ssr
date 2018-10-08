@@ -1,0 +1,16 @@
+version: '2'
+services:
+    edde-js-ssr:
+        container_name: edde-js-ssr
+        hostname: edde-js-ssr-local
+        image: edde-js-ssr:local
+        environment:
+            - PHP_IDE_CONFIG=serverName=edde-js-ssr
+            - APP_USE_SSHD=true
+            - APP_ROOT_PASSWORD=root:1234
+            - NODE_ENV=development
+            - NPM_TOKEN=${NPM_TOKEN}
+        ports:
+            - "4422:22"
+        volumes:
+            - ../:/edde-js-ssr

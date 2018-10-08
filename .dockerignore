@@ -1,0 +1,8 @@
+.nyc_output
+coverage
+lib
+src/**/*.js
+src/**/*.d.ts
+test/**/*.js
+test/**/*.d.ts
+node_modules

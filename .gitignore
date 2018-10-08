@@ -1,0 +1,7 @@
+package.json
+.nyc_output
+coverage
+lib
+src/**/*.js
+src/**/*.d.ts
+node_modules

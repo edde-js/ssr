@@ -1,0 +1,44 @@
+image: eddeframework/gitlab-runner:latest
+
+variables:
+    IMAGE: ${CI_COMMIT_REF_NAME}
+    CONTAINER: ${CI_COMMIT_SHA}-${CI_COMMIT_REF_NAME}
+
+stages:
+    - test
+    - github
+    - npm
+
+test:
+    stage: test
+    script:
+        - docker build --pull -t ${IMAGE} -f ./.docker/Dockerfile . >/dev/null 2>&1
+        - docker-compose -f .docker/docker.test.yml up -d
+        - docker exec ${CONTAINER} ./test.sh
+    after_script:
+        - docker-compose -f .docker/docker.test.yml down --volumes >/dev/null 2>&1
+    except:
+        - tags
+
+github:
+    stage: github
+    variables:
+        GIT_STRATEGY: none
+    script:
+        - git clone --mirror ${CI_REPOSITORY_URL} mirror.git
+        - cd mirror.git
+        - git push --mirror https://${GITHUB_TOKEN}@github.com/edde-js/ssr.git
+    only:
+        - master
+        - tags
+
+npm:
+    stage: npm
+    script:
+        - docker build --pull -t ${IMAGE} -f ./.docker/Dockerfile . >/dev/null 2>&1
+        - docker-compose -f .docker/docker.test.yml up -d
+        - docker exec ${CONTAINER} ./publish.sh
+    after_script:
+        - docker-compose -f .docker/docker.test.yml down --volumes >/dev/null 2>&1
+    only:
+        - tags

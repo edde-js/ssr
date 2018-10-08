@@ -1,0 +1,10 @@
+version: '2'
+services:
+    edde-js-ssr:
+        image: ${IMAGE}
+        container_name: ${CONTAINER}
+        environment:
+            - NPM_TOKEN=${NPM_TOKEN}
+            - CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME}
+            - NODE_ENV=development
+            - CI=true

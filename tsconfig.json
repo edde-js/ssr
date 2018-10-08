@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"rootDir": "src",
+		"module": "commonjs",
+		"declaration": true,
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"noImplicitAny": true,
+		"noFallthroughCasesInSwitch": true,
+		"inlineSourceMap": false,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true,
+		"target": "es2017",
+		"removeComments": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"alwaysStrict": true,
+		"newLine": "LF",
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"pretty": true,
+		"emitDecoratorMetadata": false,
+		"strictNullChecks": true,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "src",
+		"lib": [
+			"dom",
+			"es2017"
+		]
+	},
+	"exclude": [
+		"src/**/*.spec.ts"
+	]
+}

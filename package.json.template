@@ -1,0 +1,54 @@
+{
+	"name": "@edde-js/ssr",
+	"version": "${CI_COMMIT_REF_NAME}",
+	"description": "Simple SSR support for edde-js",
+	"homepage": "https://github.com/edde-js/ssr#readme",
+	"bugs": "https://github.com/edde-js/ssr/issues",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:edde-js/ssr.git"
+	},
+	"author": "Marek Hanzal",
+	"license": "Apache-2.0",
+	"devDependencies": {
+		"@types/node": "latest",
+		"ava": "latest",
+		"nyc": "latest",
+		"tslint": "latest",
+		"typescript": "latest"
+	},
+	"dependencies": {
+		"@types/node-cache": "latest",
+		"@types/mime-types": "latest",
+		"@types/jsdom": "latest",
+		"@types/minimist": "latest",
+		"node-cache": "latest",
+		"mime-types": "latest",
+		"jsdom": "latest",
+		"minimist": "latest"
+	},
+	"main": "src/index",
+	"types":  "src/index",
+	"bin": "./src/ssr.js",
+	"files": [
+		"src"
+	],
+	"nyc": {
+		"exclude": [
+			"src/**/*.spec.js"
+		]
+	},
+	"ava": {
+		"files": [
+			"src/**/*.spec.js"
+		],
+		"concurrency": 24,
+		"failFast": true,
+		"failWithoutAssertions": true
+	},
+	"scripts": {
+		"pretest": "npm run build",
+		"test": "node_modules/.bin/nyc node_modules/.bin/ava",
+		"build": "find src -type f -name '*.js' -delete && node_modules/.bin/tsc"
+	}
+}
