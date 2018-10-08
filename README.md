@@ -5,3 +5,6 @@
 
 Simple Server Side Renderer for edde-js; it may contain proprietary stuff for edde-js, but in general it's quite independent on
 the rest of edde-js.
+
+
+For the curious ones, package is built and available in as [@edde-js/ssr]() package.

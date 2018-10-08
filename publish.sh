@@ -5,4 +5,4 @@ cd ${APP_ROOT}
 cat package.json
 yarn install --unsafe-perm
 npm run build
-npm publish
+npm publish --access public
