@@ -7,4 +7,4 @@ Simple Server Side Renderer for edde-js; it may contain proprietary stuff for ed
 the rest of edde-js.
 
 
-For the curious ones, package is built and available in as [@edde-js/ssr]() package.
+For the curious ones, package is built and available as [@edde-js/ssr](https://www.npmjs.com/package/@edde-js/ssr) package.
